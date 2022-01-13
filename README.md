@@ -9,5 +9,5 @@ Repository to exercise JAVA
 [IntelliJ IDEA Community Edition](https://www.jetbrains.com/idea/download/#section=windows)
 
 ## Projects
-### 1. [Calculator](modules/Calculator)
+### 1. [Calculator](tree/master/Calculator)
 ### 2. [ToDo List]()

@@ -1,4 +1,4 @@
-# To Do List Project
+# ToDo List Project
 * Command line project
 * Show list of items
 * List size is fixed

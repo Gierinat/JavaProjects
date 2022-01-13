@@ -1,0 +1,4 @@
+include 'modules:Calculator'
+findProject(':modules:Calculator')?.name = 'Calculator'
+include 'Calculator'
+

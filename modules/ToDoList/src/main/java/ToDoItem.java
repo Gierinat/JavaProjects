@@ -7,22 +7,25 @@ public class ToDoItem {
         this.isDone = false;
     }
 
-    //TODO add setToDo method; refactor so signature do not take parameter
-    public void setDone(boolean done) {
-        isDone = done;
+    public void setDone() {
+        isDone = true;
+    }
+    public void setToDo() {
+        isDone = false;
     }
 
     public void setSummary(String updatedSummary) {
         summary = updatedSummary;
     }
 
-    //TODO override toString
-    public void printTask() {
-        System.out.print(this.summary + " | ");
+    public String toString() {
+        String out = this.summary + " | ";
+
         if (this.isDone) {
-            System.out.println("DONE");
+            out += "DONE";
         } else {
-            System.out.println("TO DO");
+            out += "TO DO";
         }
+        return out;
     }
 }

@@ -33,12 +33,16 @@ public class ToDoList {
                     closeTask();
                     break;
                 }
+                case "5": {
+                    reopenTask();
+                    break;
+                }
                 default: {
                     System.out.println("No such option.\n");
                 }
             }
 
-        } while (!menuChoice.equals("5"));
+        } while (!menuChoice.equals("6"));
     }
 
     private static void displayMenu() {
@@ -47,16 +51,24 @@ public class ToDoList {
                 "\n 2. Edit task" +
                 "\n 3. Remove task" +
                 "\n 4. Close task" +
-                "\n 5. Exit");
+                "\n 5. Reopen Task" +
+                "\n 6. Exit");
     }
 
     private static void addTask() {
-        System.out.println("Provide short task summary");
-        String summary = scanner.nextLine();
-        ToDoItem item = new ToDoItem(summary);
-        addNextToList(toDoList, item);
+        int maxArrayIndex = toDoList.length - 1;
+
+        if (toDoList[maxArrayIndex] == null) {
+            System.out.println("Provide short task summary");
+            String summary = scanner.nextLine();
+
+            ToDoItem item = new ToDoItem(summary);
+            addNextToList(toDoList, item);
+        } else {
+            System.out.println("Trial version allows to add up to 10 tasks. Remove tasks to add new ones.");
+        }
     }
-//TODO Let user know one the list limitation
+
     private static void addNextToList(ToDoItem[] toDoList, ToDoItem item) {
         for (int i = 0; i < toDoList.length; i++) {
             if (toDoList[i] == null) {
@@ -65,52 +77,100 @@ public class ToDoList {
             }
         }
     }
-//TODO handle editing nonexisting item
+
     private static void editTask() {
+
         System.out.println("Provide task number you want to edit");
-        int taskNumber = scanner.nextInt();
-        scanner.nextLine();
+        int taskNumber = getIntValue();
 
-        System.out.println("Provide new summary for task: " + taskNumber);
-        String summary = scanner.nextLine();
+        if (taskExists(taskNumber)) {
+            System.out.println("Provide new summary for task: " + taskNumber);
+            String summary = scanner.nextLine();
 
-        toDoList[taskNumber - 1].setSummary(summary);
+            toDoList[taskNumber - 1].setSummary(summary);
+        } else {
+            System.out.println("Task does not exist.");
+        }
     }
-//TODO handle removing nonexisting item
+
     private static void removeTask() {
         System.out.println("Provide task number you want to delete");
-        int taskNumber = scanner.nextInt();
-        scanner.nextLine();
+        int taskNumber = getIntValue();
 
-        ToDoItem item = toDoList[taskNumber - 1];
+        if (taskExists(taskNumber)) {
 
-        if (item != null) {
             for (int i = taskNumber - 1; i < toDoList.length - 1; i++) {
                 toDoList[i] = toDoList[i + 1];
             }
             toDoList[toDoList.length - 1] = null;
 
         } else {
-            System.out.println("No such task.");
+            System.out.println("Task does not exist.");
         }
     }
 
     private static void closeTask() {
         System.out.println("Provide task number you want to close");
-        int taskNumber = scanner.nextInt();
-        toDoList[taskNumber - 1].setDone(true);
+        int taskNumber = getIntValue();
+
+        if (taskExists(taskNumber)) {
+            toDoList[taskNumber - 1].setDone();
+        } else {
+            System.out.println("Task does not exist.");
+        }
+    }
+
+    private static void reopenTask() {
+        System.out.println("Provide task number you want to reopen");
+        int taskNumber = getIntValue();
+
+        if (taskExists(taskNumber)) {
+            toDoList[taskNumber - 1].setToDo();
+        } else {
+            System.out.println("Task does not exist.");
+        }
+    }
+
+    private static boolean isTaskIndexInArray(int taskNumber) {
+        int index = taskNumber - 1;
+        for (int i = 0; i < toDoList.length; i++) {
+            if (index == i) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean taskExists(int taskNumber) {
+        if (isTaskIndexInArray(taskNumber)) {
+            int index = taskNumber - 1;
+            if (toDoList[index] != null) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static int getIntValue() {
+        int integer = 0;
+
+        if (scanner.hasNextInt()) {
+            integer = scanner.nextInt();
+        }
+        scanner.nextLine();
+        return integer;
     }
 
     private static void displayToDoList() {
-
         System.out.println();
-//TODO for each loop
-        for (int i = 0; i < toDoList.length; i++) {
-            ToDoItem item = toDoList[i];
+
+        int index = 1;
+        for (ToDoItem item : toDoList) {
 
             if (item != null) {
-                System.out.print(i + 1 + ". ");
-                item.printTask();
+                System.out.print(index + ". ");
+                System.out.println(item);
+                index++;
             }
         }
         System.out.println();

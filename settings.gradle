@@ -1,6 +1,5 @@
-include 'modules:Calculator'
-findProject(':modules:Calculator')?.name = 'Calculator'
-include 'Calculator'
-include 'modules:ToDoList'
-findProject(':modules:ToDoList')?.name = 'ToDoList'
+rootProject.name = 'JavaProjects'
+include '#1_Calculator'
+include '#2_ToDoList'
+include '#3_DuelGame'
 

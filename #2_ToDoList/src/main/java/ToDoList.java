@@ -37,6 +37,9 @@ public class ToDoList {
                     reopenTask();
                     break;
                 }
+                case "6": {
+                    break;
+                }
                 default: {
                     System.out.println("No such option.\n");
                 }

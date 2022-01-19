@@ -1,6 +1,6 @@
 package utils;
 
-public class StandardOutputLogger implements Logger {
+public class ConsoleLogger implements Logger {
     Object object;
 
     @Override

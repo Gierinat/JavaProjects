@@ -22,9 +22,11 @@ public class DuelGame extends GameDisplay {
 
     public void run() {
         log("Game Started.");
+        printer.displayTitle("Welcome to Duel Game!!!");
 
         MainMenuOptionsEnum menuChoice;
         do {
+            printer.displayTitle("Duel GAme Main Menu");
             displayMenu();
             menuChoice = null;
 

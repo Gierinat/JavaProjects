@@ -2,6 +2,12 @@ plugins {
     id 'java'
 }
 
+jar {
+    manifest {
+        attributes 'Main-Class': 'duelGame.GameRunner'
+    }
+}
+
 group 'MichalGierlach'
 version '1.0-SNAPSHOT'
 

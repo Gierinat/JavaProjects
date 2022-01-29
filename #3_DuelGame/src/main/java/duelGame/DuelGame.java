@@ -3,14 +3,10 @@ package duelGame;
 import data.MainMenuOptionsEnum;
 import utils.PrintStreamLogger;
 
-import java.util.Scanner;
-
 import static data.MainMenuOptionsEnum.EXIT;
 import static data.MainMenuOptionsEnum.fromNumber;
 
 public class DuelGame extends GameDisplay {
-    static Scanner scanner = new Scanner(System.in);
-
     public DuelGame(String[] options) {
         if (options.length > 0) {
             if ("-logDEBUG".equals(options[0])) {
@@ -30,8 +26,19 @@ public class DuelGame extends GameDisplay {
         MainMenuOptionsEnum menuChoice;
         do {
             displayMenu();
-            int input = getIntValue();
-            menuChoice = fromNumber(input);
+            menuChoice = null;
+
+            while (menuChoice == null) {
+                try {
+                    int inputChoice = input.getIntValue();
+                    menuChoice = fromNumber(inputChoice);
+                } catch (NullPointerException e) {
+                    log(e.getMessage());
+                    e.printStackTrace(logPrintStream);
+                    printer.singleDisplay("No such option.\n");
+                    displayMenu();
+                }
+            }
 
             switch (menuChoice) {
                 case NEW_GAME: {
@@ -43,8 +50,8 @@ public class DuelGame extends GameDisplay {
                     break;
                 }
                 default: {
-                    log("Wrong option chosen.");
-                    printer.singleDisplay("No such option.\n");
+                    log("Not implemented option chosen.");
+                    printer.singleDisplay("Option not yet implemented.\n");
                 }
             }
         } while (!menuChoice.equals(EXIT));
@@ -54,16 +61,6 @@ public class DuelGame extends GameDisplay {
         for (MainMenuOptionsEnum option : MainMenuOptionsEnum.values()) {
             printer.singleDisplay(option.toString());
         }
-    }
-
-    private static int getIntValue() {
-        int integer = 0;
-
-        if (scanner.hasNextInt()) {
-            integer = scanner.nextInt();
-        }
-        scanner.nextLine();
-        return integer;
     }
 
 }

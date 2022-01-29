@@ -1,14 +1,13 @@
 package duelGame;
 
-import utils.ConsolePrinter;
-import utils.Loggable;
-import utils.Printable;
+import utils.*;
 
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 
 public abstract class GameDisplay {
     Printable printer = new ConsolePrinter();
+    Inputable input = new KeyInputReceiver();
     String logLevel;
     Loggable logger;
     PrintStream logPrintStream;

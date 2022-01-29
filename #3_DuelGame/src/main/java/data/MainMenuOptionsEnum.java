@@ -23,12 +23,12 @@ public enum MainMenuOptionsEnum {
                 name;
     }
 
-    public static MainMenuOptionsEnum fromNumber(int number) {
+    public static MainMenuOptionsEnum fromNumber(int number) throws NullPointerException {
         for(MainMenuOptionsEnum m : MainMenuOptionsEnum.values()) {
             if(m.number == number) {
                 return m;
             }
         }
-        return null;
+        throw new NullPointerException("No such option for: " + MainMenuOptionsEnum.class.getSimpleName());
     }
 }

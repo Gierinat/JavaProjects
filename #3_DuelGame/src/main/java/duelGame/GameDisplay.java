@@ -1,15 +1,17 @@
 package duelGame;
 
-import utils.Logger;
+import utils.ConsolePrinter;
+import utils.Loggable;
+import utils.Printable;
 
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 
 public abstract class GameDisplay {
+    Printable printer = new ConsolePrinter();
     String logLevel;
-    Logger logger;
+    Loggable logger;
     PrintStream logPrintStream;
-
     {
         try {
             logPrintStream = new PrintStream("logFile.txt");

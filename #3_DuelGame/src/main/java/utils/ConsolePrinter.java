@@ -1,6 +1,6 @@
 package utils;
 
-public class ConsolePrinter implements Printer {
+public class ConsolePrinter implements Printable {
     @Override
     public void singleDisplay(String singleString) {
         System.out.println(singleString);

@@ -1,19 +1,14 @@
 package duelGame;
 
 import data.MainMenuOptionsEnum;
-import utils.ConsoleLogger;
-import utils.ConsolePrinter;
-import utils.Printer;
+import utils.PrintStreamLogger;
 
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
 import java.util.Scanner;
 
 import static data.MainMenuOptionsEnum.EXIT;
 import static data.MainMenuOptionsEnum.fromNumber;
 
 public class DuelGame extends GameDisplay {
-    Printer printer = new ConsolePrinter();
     static Scanner scanner = new Scanner(System.in);
 
     public DuelGame(String[] options) {
@@ -25,7 +20,7 @@ public class DuelGame extends GameDisplay {
             }
         } else this.logLevel = "INFO";
 
-        logger = new ConsoleLogger(logLevel, logPrintStream);
+        logger = new PrintStreamLogger(logLevel, logPrintStream);
     }
 
 

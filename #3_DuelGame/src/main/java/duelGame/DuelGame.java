@@ -13,14 +13,6 @@ import static data.MainMenuOptionsEnum.EXIT;
 import static data.MainMenuOptionsEnum.fromNumber;
 
 public class DuelGame extends GameDisplay {
-    {
-        try {
-            logPrintStream = new PrintStream("logFile.txt");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
     Printer printer = new ConsolePrinter();
     static Scanner scanner = new Scanner(System.in);
 
@@ -57,7 +49,7 @@ public class DuelGame extends GameDisplay {
                 }
                 default: {
                     log("Wrong option chosen.");
-                    printer.simpleDisplay("No such option.\n");
+                    printer.singleDisplay("No such option.\n");
                 }
             }
         } while (!menuChoice.equals(EXIT));
@@ -65,7 +57,7 @@ public class DuelGame extends GameDisplay {
 
     private void displayMenu() {
         for (MainMenuOptionsEnum option : MainMenuOptionsEnum.values()) {
-            printer.simpleDisplay(option.toString());
+            printer.singleDisplay(option.toString());
         }
     }
 

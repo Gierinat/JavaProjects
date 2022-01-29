@@ -1,7 +1,7 @@
 package utils;
 
 public interface Printer {
-    void simpleDisplay(String singleString);
+    void singleDisplay(String singleString);
 
     void sideBySideDisplay();
 }

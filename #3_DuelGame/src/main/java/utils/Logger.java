@@ -2,7 +2,6 @@ package utils;
 
 public interface Logger {
 
-    void setObject(Object object);
+    void log(String message, String objectToString, String objectHash);
 
-    void logClass();
 }

@@ -11,9 +11,9 @@ import static data.DuelOptionsEnum.fromNumber;
 public class Duel extends GameDisplay {
 
     Duel(Printable printer, Inputable input, Loggable logger) {
+        super(logger);
         this.printer = printer;
         this.input = input;
-        this.logger = logger;
     }
 
     void run() {
@@ -32,7 +32,7 @@ public class Duel extends GameDisplay {
                     menuChoice = fromNumber(inputChoice);
                 } catch (NullPointerException e) {
                     log(e.getMessage());
-                    e.printStackTrace(logPrintStream);
+                    e.printStackTrace(logger.getPrintStream());
                     printer.singleDisplay("No such option.\n");
                     displayMenu();
                 }

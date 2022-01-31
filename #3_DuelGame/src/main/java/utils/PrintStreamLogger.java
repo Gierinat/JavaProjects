@@ -7,8 +7,8 @@ import java.time.format.DateTimeFormatter;
 
 public class PrintStreamLogger implements Loggable {
     private final PrintStream printStream;
-    private final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd'T'HH:mm:ss:SSS");
     private final String logLevel;
+    private final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd'T'HH:mm:ss:SSS");
 
     public PrintStreamLogger(String logLevel, PrintStream printStream) {
         this.printStream = printStream;
@@ -17,7 +17,7 @@ public class PrintStreamLogger implements Loggable {
 
     @Override
     public void log(String message, String objectToString, String objectHash) {
-        if("DEBUG".equals(logLevel)) {
+        if ("DEBUG".equals(logLevel)) {
             debug(message, objectToString, objectHash);
         } else {
             info(message);
@@ -31,5 +31,9 @@ public class PrintStreamLogger implements Loggable {
     private void debug(String message, String objectToString, String objectHash) {
         printStream.println(dateTimeFormatter.format(LocalDateTime.now()) + " DEBUG " + message +
                 " #SOURCE: " + objectToString + "#hashCode: " + objectHash);
+    }
+
+    public PrintStream getPrintStream() {
+        return printStream;
     }
 }

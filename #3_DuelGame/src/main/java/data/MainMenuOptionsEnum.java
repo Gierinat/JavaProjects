@@ -24,8 +24,8 @@ public enum MainMenuOptionsEnum {
     }
 
     public static MainMenuOptionsEnum fromNumber(int number) throws NullPointerException {
-        for(MainMenuOptionsEnum option : MainMenuOptionsEnum.values()) {
-            if(option.number == number) {
+        for (MainMenuOptionsEnum option : MainMenuOptionsEnum.values()) {
+            if (option.number == number) {
                 return option;
             }
         }

@@ -26,7 +26,7 @@ public class DuelGame extends GameDisplay {
 
         MainMenuOptionsEnum menuChoice;
         do {
-            printer.displayTitle("Duel GAme Main Menu");
+            printer.displayTitle("Duel Game Main Menu");
             displayMenu();
             menuChoice = null;
 
@@ -45,6 +45,9 @@ public class DuelGame extends GameDisplay {
             switch (menuChoice) {
                 case NEW_GAME: {
                     log("New Game chosen.");
+                    Duel duel = new Duel(printer, input, logger);
+                    duel.run();
+                    //TODO and after that what happens: 1. with Duel obj. 2. with this Switch and loop?
                     break;
                 }
                 case EXIT: {
@@ -59,6 +62,7 @@ public class DuelGame extends GameDisplay {
         } while (!menuChoice.equals(EXIT));
     }
 
+    //TODO tried to move it to GameDisplay but could not cope with different Enums
     private void displayMenu() {
         for (MainMenuOptionsEnum option : MainMenuOptionsEnum.values()) {
             printer.singleDisplay(option.toString());

@@ -1,12 +1,13 @@
 package game.duelGame;
 
+import game.utils.ConsolePrinter;
 import game.utils.Logger;
 import game.data.MainMenuOptionsEnum;
 
 public class DuelGame extends GameBase {
 
-    public DuelGame(Logger logger) {
-        super(logger);
+    public DuelGame(Logger logger, ConsolePrinter printer) {
+        super(logger, printer);
     }
 
     public void run() {
@@ -34,8 +35,7 @@ public class DuelGame extends GameBase {
             switch (menuChoice) {
                 case NEW_GAME: {
                     log("New Game chosen.");
-                    Duel duel = new Duel(printer, input, logger);
-                    duel.run();
+                    new Duel(printer, input, logger).run();
                     break;
                 }
                 case EXIT: {

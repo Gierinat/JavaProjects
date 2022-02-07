@@ -4,11 +4,12 @@ import game.utils.*;
 
 public abstract class GameBase {
 
-    Printer printer = new ConsolePrinter();
+    Printer printer;
     Receiver input;
     Logger logger;
 
-    public GameBase(Logger logger) {
+    public GameBase(Logger logger, Printer printer) {
+        this.printer = printer;
         this.logger = logger;
         this.input = new InputReceiver(logger);
     }

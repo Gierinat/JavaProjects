@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class InputReceiver implements Receiver {
 
-    static Scanner scanner = new Scanner(System.in);
+    final static Scanner scanner = new Scanner(System.in);
     Logger logger;
 
     public InputReceiver(Logger logger) {
@@ -18,7 +18,7 @@ public class InputReceiver implements Receiver {
         logger.log("User input: \"" + input + "\"", this.toString(), String.valueOf(this.hashCode()));
 
         try {
-            integer = Integer.valueOf(input);
+            integer = Integer.parseInt(input);
         } catch (NumberFormatException e) {
             logger.log(e.getMessage(), this.toString(), String.valueOf(this.hashCode()));
             e.printStackTrace(logger.getPrintStream());

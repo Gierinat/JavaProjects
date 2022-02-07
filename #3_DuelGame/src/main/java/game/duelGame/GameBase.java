@@ -8,10 +8,10 @@ public abstract class GameBase {
     Receiver input;
     Logger logger;
 
-    public GameBase(Logger logger, Printer printer) {
+    public GameBase(Logger logger, Printer printer, Receiver input) {
         this.printer = printer;
         this.logger = logger;
-        this.input = new InputReceiver(logger);
+        this.input = input;
     }
 
     void log(String message) {

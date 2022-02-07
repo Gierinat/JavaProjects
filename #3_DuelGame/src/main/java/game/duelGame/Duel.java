@@ -11,8 +11,7 @@ import static game.DuelOptionsEnum.fromNumber;
 public class Duel extends GameBase {
 
     Duel(Printer printer, Receiver input, Logger logger) {
-        super(logger, printer);
-        this.input = input;
+        super(logger, printer, input);
     }
 
     void run() {

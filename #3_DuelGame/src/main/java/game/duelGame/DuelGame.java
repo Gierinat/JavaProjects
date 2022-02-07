@@ -3,11 +3,12 @@ package game.duelGame;
 import game.utils.ConsolePrinter;
 import game.utils.Logger;
 import game.MainMenuOptionsEnum;
+import game.utils.Receiver;
 
 public class DuelGame extends GameBase {
 
-    public DuelGame(Logger logger, ConsolePrinter printer) {
-        super(logger, printer);
+    public DuelGame(Logger logger, ConsolePrinter printer, Receiver input) {
+        super(logger, printer, input);
     }
 
     public void run() {

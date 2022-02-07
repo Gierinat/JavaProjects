@@ -1,6 +1,14 @@
 package game.utils;
 
+import java.io.PrintStream;
+
 public class ConsolePrinter implements Printer {
+
+    private final PrintStream printStream;
+
+    public ConsolePrinter(PrintStream printStream) {
+        this.printStream = printStream;
+    }
 
     @Override
     public void printLine(String singleString) {

@@ -28,7 +28,15 @@ public class Duel extends GameBase {
 
             switch (menuChoice) {
                 case SET_PLAYER_1: {
-                    log(".....");
+                    log("Setting Player_1");
+                    break;
+                }
+                case SET_PLAYER_2: {
+                    log("Setting Player_2");
+                    break;
+                }
+                case START_DUEL: {
+                    log("Duel Started");
                     break;
                 }
                 case BACK: {

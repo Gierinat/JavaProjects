@@ -1,12 +1,9 @@
-package duelGame;
+package game.duelGame;
 
-import data.MainMenuOptionsEnum;
-import utils.Loggable;
+import game.utils.Loggable;
+import game.data.MainMenuOptionsEnum;
 
-import static data.MainMenuOptionsEnum.EXIT;
-import static data.MainMenuOptionsEnum.fromNumber;
-
-public class DuelGame extends GameDisplay {
+public class DuelGame extends GameBase {
 
     public DuelGame(Loggable logger) {
         super(logger);
@@ -25,7 +22,7 @@ public class DuelGame extends GameDisplay {
             while (menuChoice == null) {
                 try {
                     int inputChoice = input.getIntValue();
-                    menuChoice = fromNumber(inputChoice);
+                    menuChoice = MainMenuOptionsEnum.fromNumber(inputChoice);
                 } catch (NullPointerException e) {
                     log(e.getMessage());
                     e.printStackTrace(logger.getPrintStream());
@@ -50,7 +47,7 @@ public class DuelGame extends GameDisplay {
                     printer.singleDisplay("Option not yet implemented.\n");
                 }
             }
-        } while (!menuChoice.equals(EXIT));
+        } while (!menuChoice.equals(MainMenuOptionsEnum.EXIT));
     }
 
     private void displayMenu() {

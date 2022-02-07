@@ -1,14 +1,14 @@
-package duelGame;
+package game.duelGame;
 
-import data.DuelOptionsEnum;
-import utils.Inputable;
-import utils.Loggable;
-import utils.Printable;
+import game.data.DuelOptionsEnum;
+import game.utils.Inputable;
+import game.utils.Loggable;
+import game.utils.Printable;
 
-import static data.DuelOptionsEnum.BACK;
-import static data.DuelOptionsEnum.fromNumber;
+import static game.data.DuelOptionsEnum.BACK;
+import static game.data.DuelOptionsEnum.fromNumber;
 
-public class Duel extends GameDisplay {
+public class Duel extends GameBase {
 
     Duel(Printable printer, Inputable input, Loggable logger) {
         super(logger);

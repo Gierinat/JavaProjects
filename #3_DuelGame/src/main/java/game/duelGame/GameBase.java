@@ -1,14 +1,15 @@
-package duelGame;
+package game.duelGame;
 
-import utils.*;
+import game.utils.*;
 
-public abstract class GameDisplay {
+public abstract class GameBase {
     Printable printer = new ConsolePrinter();
-    Inputable input = new KeyInputReceiver();
+    Inputable input;
     Loggable logger;
 
-    public GameDisplay(Loggable logger) {
+    public GameBase(Loggable logger) {
         this.logger = logger;
+        this.input = new KeyInputReceiver(logger);
     }
 
     void log(String message) {

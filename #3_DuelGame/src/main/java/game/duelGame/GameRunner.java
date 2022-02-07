@@ -1,6 +1,6 @@
-package duelGame;
+package game.duelGame;
 
-import utils.PrintStreamLogger;
+import game.utils.PrintStreamLogger;
 
 import java.io.FileNotFoundException;
 import java.io.PrintStream;

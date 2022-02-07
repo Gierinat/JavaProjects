@@ -1,4 +1,4 @@
-package utils;
+package game.utils;
 
 public interface Inputable {
     String getInput();

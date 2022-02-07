@@ -1,4 +1,4 @@
-package utils;
+package game.utils;
 
 public interface Printable {
     void singleDisplay(String singleString);

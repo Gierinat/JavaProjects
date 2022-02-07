@@ -1,4 +1,4 @@
-package utils;
+package game.utils;
 
 public class ConsolePrinter implements Printable {
     @Override

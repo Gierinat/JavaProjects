@@ -7,4 +7,6 @@ public interface Printer {
     void sideBySideDisplay();
 
     void printTitle(String title);
+
+    void printSubTitle(String subTitle);
 }

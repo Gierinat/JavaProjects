@@ -1,9 +1,10 @@
 package game.model;
 
-public class WarriorCharater extends AbstractCharacter {
+public class WarriorCharacter extends AbstractCharacter {
 
-    String className = "Warrior";
-    int hitPoints = 200;
+    public WarriorCharacter() {
+        super("Warrior", 200, 20);
+    }
 
     @Override
     int attack() {

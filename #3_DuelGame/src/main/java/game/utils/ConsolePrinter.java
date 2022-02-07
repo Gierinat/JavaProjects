@@ -21,9 +21,15 @@ public class ConsolePrinter implements Printer {
 
     @Override
     public void printTitle(String title) {
-        printStream.println("\n".repeat(5));
+        printStream.println("\n".repeat(2));
         printStream.println("-".repeat(80));
         printStream.println(title.toUpperCase());
+        printStream.println("-".repeat(80));
+    }
+
+    @Override
+    public void printSubTitle(String subTitle) {
+        printStream.println(subTitle);
         printStream.println("-".repeat(80));
     }
 }

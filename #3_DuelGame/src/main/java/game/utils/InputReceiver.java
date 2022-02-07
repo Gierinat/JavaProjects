@@ -13,6 +13,12 @@ public class InputReceiver implements Receiver {
         this.validator = validator;
     }
 
+
+    @Override
+    public String receive() {
+        return scanner.nextLine();
+    }
+
     @Override
     public int receive(int rangeFrom, int rangeTo) {
 

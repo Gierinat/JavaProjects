@@ -1,16 +1,23 @@
 package game.duelGame;
 
 import game.DuelOptionsEnum;
+import game.model.AbstractCharacter;
+import game.model.Player;
+import game.model.WarriorCharacter;
 import game.utils.Logger;
 import game.utils.Printer;
 import game.utils.Receiver;
 
+import java.util.Arrays;
+
 import static game.DuelOptionsEnum.BACK;
 import static game.DuelOptionsEnum.fromNumber;
 
-public class Duel extends GameBase {
+public class DuelSettings extends GameBase {
 
-    Duel(Printer printer, Receiver input, Logger logger) {
+    Player[] players = new Player[2];
+
+    DuelSettings(Printer printer, Receiver input, Logger logger) {
         super(logger, printer, input);
     }
 
@@ -20,7 +27,8 @@ public class Duel extends GameBase {
 
         DuelOptionsEnum menuChoice;
         do {
-            printer.printTitle("New Duel Settings");
+            printer.printTitle("Duel Settings");
+            printer.printSubTitle(Arrays.toString(players).replace("null", "SETUP_PLAYER"));
             displayMenu();
 
             int inputChoice = input.receive(1, DuelOptionsEnum.values().length);
@@ -29,14 +37,17 @@ public class Duel extends GameBase {
             switch (menuChoice) {
                 case SET_PLAYER_1: {
                     log("Setting Player_1");
+                    setPlayer(0);
                     break;
                 }
                 case SET_PLAYER_2: {
                     log("Setting Player_2");
+                    setPlayer(1);
                     break;
                 }
                 case START_DUEL: {
                     log("Duel Started");
+                    // TODO: 07.02.2022 Start Duel, but first validate if two players exist 
                     break;
                 }
                 case BACK: {
@@ -50,6 +61,23 @@ public class Duel extends GameBase {
             }
 
         } while (!menuChoice.equals(BACK));
+    }
+
+    private void setPlayer(int playerNumber) {
+        printer.printLine("Set Player " + (playerNumber + 1) + " name: ");
+        String name = input.receive();
+        AbstractCharacter[] characters = setCharacter(1);
+        players[playerNumber] = new Player(name, playerNumber, characters);
+    }
+
+    private AbstractCharacter[] setCharacter(int numberOfCharacters) {
+
+        AbstractCharacter[] characters = new AbstractCharacter[numberOfCharacters];
+        for (int i = 0; i < numberOfCharacters; i++) {
+            // TODO: 08.02.2022 Character Class selection
+            characters[i] = new WarriorCharacter();
+        }
+        return characters;
     }
 
     private void displayMenu() {

@@ -26,7 +26,7 @@ public class DuelGame extends GameBase {
             switch (menuChoice) {
                 case NEW_GAME: {
                     log("New Game chosen.");
-                    new Duel(printer, input, logger).run();
+                    new DuelSettings(printer, input, logger).run();
                     break;
                 }
                 case EXIT: {

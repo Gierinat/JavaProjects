@@ -1,9 +1,9 @@
 package game.duelGame;
 
 import game.DuelOptionsEnum;
-import game.utils.Receiver;
 import game.utils.Logger;
 import game.utils.Printer;
+import game.utils.Receiver;
 
 import static game.DuelOptionsEnum.BACK;
 import static game.DuelOptionsEnum.fromNumber;
@@ -22,19 +22,9 @@ public class Duel extends GameBase {
         do {
             printer.printTitle("New Duel Settings");
             displayMenu();
-            menuChoice = null;
 
-            while (menuChoice == null) {
-                try {
-                    int inputChoice = input.receive();
-                    menuChoice = fromNumber(inputChoice);
-                } catch (NullPointerException e) {
-                    log(e.getMessage());
-                    e.printStackTrace(logger.getPrintStream());
-                    printer.printLine("No such option.\n");
-                    displayMenu();
-                }
-            }
+            int inputChoice = input.receive(1, DuelOptionsEnum.values().length);
+            menuChoice = fromNumber(inputChoice);
 
             switch (menuChoice) {
                 case SET_PLAYER_1: {

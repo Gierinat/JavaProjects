@@ -2,5 +2,5 @@ package game.utils;
 
 public interface Receiver {
 
-    int receive();
+    int receive(int rangeFrom, int rangeTo);
 }

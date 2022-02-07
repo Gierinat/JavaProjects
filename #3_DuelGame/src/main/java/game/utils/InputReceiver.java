@@ -4,26 +4,24 @@ import java.util.Scanner;
 
 public class InputReceiver implements Receiver {
 
-    final static Scanner scanner = new Scanner(System.in);
-    Logger logger;
+    final private Scanner scanner = new Scanner(System.in);
+    final private Logger logger;
+    final private InputValidator validator;
 
-    public InputReceiver(Logger logger) {
+    public InputReceiver(Logger logger, InputValidator validator) {
         this.logger = logger;
+        this.validator = validator;
     }
 
     @Override
-    public int receive() {
-        int integer = 0;
-        String input = scanner.nextLine();
-        logger.log("User input: \"" + input + "\"", this.toString(), String.valueOf(this.hashCode()));
+    public int receive(int rangeFrom, int rangeTo) {
 
-        try {
-            integer = Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            logger.log(e.getMessage(), this.toString(), String.valueOf(this.hashCode()));
-            e.printStackTrace(logger.getPrintStream());
-        }
+        String input;
+        do {
+            input = scanner.nextLine();
+            logger.log("User input: \"" + input + "\"", this.toString(), String.valueOf(this.hashCode()));
+        } while (!validator.validNumber(input, rangeFrom, rangeTo));
 
-        return integer;
+        return Integer.parseInt(input);
     }
 }

@@ -1,6 +1,8 @@
 package game.duelGame;
 
-import game.utils.*;
+import game.utils.Logger;
+import game.utils.Printer;
+import game.utils.Receiver;
 
 public abstract class GameBase {
 

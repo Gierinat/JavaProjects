@@ -1,9 +1,6 @@
 package game.duelGame;
 
-import game.utils.ConsolePrinter;
-import game.utils.InputReceiver;
-import game.utils.Logger;
-import game.utils.LoggerPrintStream;
+import game.utils.*;
 
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
@@ -27,11 +24,12 @@ public class GameRunner {
         if (logPrintStream != null) {
 
             Logger logger = new LoggerPrintStream(logLevel, logPrintStream);
+            Printer printer = new ConsolePrinter(System.out);
 
             new DuelGame(
                     logger,
-                    new ConsolePrinter(System.out),
-                    new InputReceiver(logger)).run();
+                    printer,
+                    new InputReceiver(logger, new InputValidator(logger, printer))).run();
         }
     }
 

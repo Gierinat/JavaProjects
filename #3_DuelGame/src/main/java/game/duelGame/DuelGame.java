@@ -1,13 +1,13 @@
 package game.duelGame;
 
-import game.utils.ConsolePrinter;
-import game.utils.Logger;
 import game.MainMenuOptionsEnum;
+import game.utils.Logger;
+import game.utils.Printer;
 import game.utils.Receiver;
 
 public class DuelGame extends GameBase {
 
-    public DuelGame(Logger logger, ConsolePrinter printer, Receiver input) {
+    public DuelGame(Logger logger, Printer printer, Receiver input) {
         super(logger, printer, input);
     }
 
@@ -19,19 +19,9 @@ public class DuelGame extends GameBase {
         do {
             printer.printTitle("Duel Game Main Menu");
             displayMenu();
-            menuChoice = null;
 
-            while (menuChoice == null) {
-                try {
-                    int inputChoice = input.receive();
-                    menuChoice = MainMenuOptionsEnum.fromNumber(inputChoice);
-                } catch (NullPointerException e) {
-                    log(e.getMessage());
-                    e.printStackTrace(logger.getPrintStream());
-                    printer.printLine("No such option.\n");
-                    displayMenu();
-                }
-            }
+            int inputChoice = input.receive(1, MainMenuOptionsEnum.values().length);
+            menuChoice = MainMenuOptionsEnum.fromNumber(inputChoice);
 
             switch (menuChoice) {
                 case NEW_GAME: {

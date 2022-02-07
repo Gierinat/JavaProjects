@@ -1,12 +1,12 @@
 package game.duelGame;
 
-import game.data.DuelOptionsEnum;
+import game.DuelOptionsEnum;
 import game.utils.Receiver;
 import game.utils.Logger;
 import game.utils.Printer;
 
-import static game.data.DuelOptionsEnum.BACK;
-import static game.data.DuelOptionsEnum.fromNumber;
+import static game.DuelOptionsEnum.BACK;
+import static game.DuelOptionsEnum.fromNumber;
 
 public class Duel extends GameBase {
 

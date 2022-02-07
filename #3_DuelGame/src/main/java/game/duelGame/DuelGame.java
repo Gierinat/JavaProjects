@@ -2,7 +2,7 @@ package game.duelGame;
 
 import game.utils.ConsolePrinter;
 import game.utils.Logger;
-import game.data.MainMenuOptionsEnum;
+import game.MainMenuOptionsEnum;
 
 public class DuelGame extends GameBase {
 

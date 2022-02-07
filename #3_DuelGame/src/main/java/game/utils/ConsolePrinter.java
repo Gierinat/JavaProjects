@@ -12,7 +12,7 @@ public class ConsolePrinter implements Printer {
 
     @Override
     public void printLine(String singleString) {
-        System.out.println(singleString);
+        printStream.println(singleString);
     }
 
     @Override
@@ -21,9 +21,9 @@ public class ConsolePrinter implements Printer {
 
     @Override
     public void printTitle(String title) {
-        System.out.println("\n".repeat(5));
-        System.out.println("-".repeat(80));
-        System.out.println(title.toUpperCase());
-        System.out.println("-".repeat(80));
+        printStream.println("\n".repeat(5));
+        printStream.println("-".repeat(80));
+        printStream.println(title.toUpperCase());
+        printStream.println("-".repeat(80));
     }
 }

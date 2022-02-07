@@ -1,8 +1,9 @@
 package game.utils;
 
-public class ConsolePrinter implements Printable {
+public class ConsolePrinter implements Printer {
+
     @Override
-    public void singleDisplay(String singleString) {
+    public void printLine(String singleString) {
         System.out.println(singleString);
     }
 
@@ -11,7 +12,7 @@ public class ConsolePrinter implements Printable {
     }
 
     @Override
-    public void displayTitle(String title) {
+    public void printTitle(String title) {
         System.out.println("\n".repeat(5));
         System.out.println("-".repeat(80));
         System.out.println(title.toUpperCase());

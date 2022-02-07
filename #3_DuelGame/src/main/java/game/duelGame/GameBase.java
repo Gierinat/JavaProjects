@@ -3,13 +3,14 @@ package game.duelGame;
 import game.utils.*;
 
 public abstract class GameBase {
-    Printable printer = new ConsolePrinter();
-    Inputable input;
-    Loggable logger;
 
-    public GameBase(Loggable logger) {
+    Printer printer = new ConsolePrinter();
+    Receiver input;
+    Logger logger;
+
+    public GameBase(Logger logger) {
         this.logger = logger;
-        this.input = new KeyInputReceiver(logger);
+        this.input = new InputReceiver(logger);
     }
 
     void log(String message) {

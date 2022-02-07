@@ -1,16 +1,16 @@
 package game.duelGame;
 
 import game.data.DuelOptionsEnum;
-import game.utils.Inputable;
-import game.utils.Loggable;
-import game.utils.Printable;
+import game.utils.Receiver;
+import game.utils.Logger;
+import game.utils.Printer;
 
 import static game.data.DuelOptionsEnum.BACK;
 import static game.data.DuelOptionsEnum.fromNumber;
 
 public class Duel extends GameBase {
 
-    Duel(Printable printer, Inputable input, Loggable logger) {
+    Duel(Printer printer, Receiver input, Logger logger) {
         super(logger);
         this.printer = printer;
         this.input = input;
@@ -22,18 +22,18 @@ public class Duel extends GameBase {
 
         DuelOptionsEnum menuChoice;
         do {
-            printer.displayTitle("New Duel Settings");
+            printer.printTitle("New Duel Settings");
             displayMenu();
             menuChoice = null;
 
             while (menuChoice == null) {
                 try {
-                    int inputChoice = input.getIntValue();
+                    int inputChoice = input.receive();
                     menuChoice = fromNumber(inputChoice);
                 } catch (NullPointerException e) {
                     log(e.getMessage());
                     e.printStackTrace(logger.getPrintStream());
-                    printer.singleDisplay("No such option.\n");
+                    printer.printLine("No such option.\n");
                     displayMenu();
                 }
             }
@@ -49,7 +49,7 @@ public class Duel extends GameBase {
                 }
                 default: {
                     log("Not implemented option chosen.");
-                    printer.singleDisplay("Option not yet implemented.\n");
+                    printer.printLine("Option not yet implemented.\n");
                 }
             }
 
@@ -58,7 +58,7 @@ public class Duel extends GameBase {
 
     private void displayMenu() {
         for (DuelOptionsEnum option : DuelOptionsEnum.values()) {
-            printer.singleDisplay(option.toString());
+            printer.printLine(option.toString());
         }
     }
 }

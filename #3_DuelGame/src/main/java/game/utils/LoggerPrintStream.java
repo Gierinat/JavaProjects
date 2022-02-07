@@ -5,12 +5,13 @@ import java.io.PrintStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class PrintStreamLogger implements Loggable {
+public class LoggerPrintStream implements Logger {
+
     private final PrintStream printStream;
     private final String logLevel;
     private final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd'T'HH:mm:ss:SSS");
 
-    public PrintStreamLogger(String logLevel, PrintStream printStream) {
+    public LoggerPrintStream(String logLevel, PrintStream printStream) {
         this.printStream = printStream;
         this.logLevel = logLevel;
     }

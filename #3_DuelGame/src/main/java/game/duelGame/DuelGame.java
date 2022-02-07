@@ -1,32 +1,32 @@
 package game.duelGame;
 
-import game.utils.Loggable;
+import game.utils.Logger;
 import game.data.MainMenuOptionsEnum;
 
 public class DuelGame extends GameBase {
 
-    public DuelGame(Loggable logger) {
+    public DuelGame(Logger logger) {
         super(logger);
     }
 
     public void run() {
         log("Game Started.");
-        printer.displayTitle("Welcome to Duel Game!!!");
+        printer.printTitle("Welcome to Duel Game!!!");
 
         MainMenuOptionsEnum menuChoice;
         do {
-            printer.displayTitle("Duel Game Main Menu");
+            printer.printTitle("Duel Game Main Menu");
             displayMenu();
             menuChoice = null;
 
             while (menuChoice == null) {
                 try {
-                    int inputChoice = input.getIntValue();
+                    int inputChoice = input.receive();
                     menuChoice = MainMenuOptionsEnum.fromNumber(inputChoice);
                 } catch (NullPointerException e) {
                     log(e.getMessage());
                     e.printStackTrace(logger.getPrintStream());
-                    printer.singleDisplay("No such option.\n");
+                    printer.printLine("No such option.\n");
                     displayMenu();
                 }
             }
@@ -44,7 +44,7 @@ public class DuelGame extends GameBase {
                 }
                 default: {
                     log("Not implemented option chosen.");
-                    printer.singleDisplay("Option not yet implemented.\n");
+                    printer.printLine("Option not yet implemented.\n");
                 }
             }
         } while (!menuChoice.equals(MainMenuOptionsEnum.EXIT));
@@ -52,7 +52,7 @@ public class DuelGame extends GameBase {
 
     private void displayMenu() {
         for (MainMenuOptionsEnum option : MainMenuOptionsEnum.values()) {
-            printer.singleDisplay(option.toString());
+            printer.printLine(option.toString());
         }
     }
 

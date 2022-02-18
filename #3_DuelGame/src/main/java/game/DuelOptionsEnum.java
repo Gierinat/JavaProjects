@@ -8,25 +8,25 @@ public enum DuelOptionsEnum {
     BACK("Back", 4);
 
     private final String label;
-    private final int number;
+    private final int index;
 
-    DuelOptionsEnum(String label, int number) {
+    DuelOptionsEnum(String label, int index) {
         this.label = label;
-        this.number = number;
+        this.index = index;
     }
 
-    public static DuelOptionsEnum fromNumber(int number) throws NullPointerException {
+    public static DuelOptionsEnum fromNumber(int number) throws IllegalArgumentException {
         for (DuelOptionsEnum option : DuelOptionsEnum.values()) {
-            if (option.number == number) {
+            if (option.index == number) {
                 return option;
             }
         }
-        throw new NullPointerException("No such option for: " + DuelOptionsEnum.class.getSimpleName());
+        throw new IllegalArgumentException("No such option for: " + DuelOptionsEnum.class.getSimpleName());
     }
 
     @Override
     public String toString() {
-        return number +
+        return index +
                 ". " +
                 label;
     }

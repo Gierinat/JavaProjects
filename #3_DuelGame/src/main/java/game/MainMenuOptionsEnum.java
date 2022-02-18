@@ -9,26 +9,26 @@ public enum MainMenuOptionsEnum {
     EXIT("Exit", 5);
 
     private final String label;
-    private final int number;
+    private final int index;
 
-    MainMenuOptionsEnum(String label, int number) {
+    MainMenuOptionsEnum(String label, int index) {
         this.label = label;
-        this.number = number;
+        this.index = index;
     }
 
     @Override
     public String toString() {
-        return number +
+        return index +
                 ". " +
                 label;
     }
 
-    public static MainMenuOptionsEnum fromNumber(int number) throws NullPointerException {
+    public static MainMenuOptionsEnum fromNumber(int number) throws IllegalArgumentException {
         for (MainMenuOptionsEnum option : MainMenuOptionsEnum.values()) {
-            if (option.number == number) {
+            if (option.index == number) {
                 return option;
             }
         }
-        throw new NullPointerException("No such option for: " + MainMenuOptionsEnum.class.getSimpleName());
+        throw new IllegalArgumentException("No such option for: " + MainMenuOptionsEnum.class.getSimpleName());
     }
 }

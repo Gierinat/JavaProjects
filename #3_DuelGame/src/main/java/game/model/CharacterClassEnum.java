@@ -6,20 +6,20 @@ public enum CharacterClassEnum {
     MAGE("Mage", 2);
 
     private final String label;
-    private final int number;
+    private final int index;
 
-    CharacterClassEnum(String label, int number) {
+    CharacterClassEnum(String label, int index) {
         this.label = label;
-        this.number = number;
+        this.index = index;
     }
 
-    public static CharacterClassEnum fromNumber(int number) throws NullPointerException {
+    public static CharacterClassEnum fromNumber(int number) throws IllegalArgumentException {
         for (CharacterClassEnum option : CharacterClassEnum.values()) {
-            if (option.number == number) {
+            if (option.index == number) {
                 return option;
             }
         }
-        throw new NullPointerException("No such option for: " + CharacterClassEnum.class.getSimpleName());
+        throw new IllegalArgumentException("No such option for: " + CharacterClassEnum.class.getSimpleName());
     }
 
     @Override
@@ -28,7 +28,7 @@ public enum CharacterClassEnum {
     }
 
     public String toStringWithNumber() {
-        return number +
+        return index +
                 ". " +
                 label;
     }

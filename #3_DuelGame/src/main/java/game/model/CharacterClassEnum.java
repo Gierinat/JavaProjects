@@ -26,4 +26,10 @@ public enum CharacterClassEnum {
     public String toString() {
         return label;
     }
+
+    public String toStringWithNumber() {
+        return number +
+                ". " +
+                label;
+    }
 }

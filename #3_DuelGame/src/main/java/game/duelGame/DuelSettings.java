@@ -1,10 +1,8 @@
 package game.duelGame;
 
 import game.DuelOptionsEnum;
-import game.model.AbstractCharacter;
 import game.model.Character;
-import game.model.Player;
-import game.model.WarriorCharacter;
+import game.model.*;
 import game.utils.Logger;
 import game.utils.Printer;
 import game.utils.Receiver;
@@ -14,6 +12,7 @@ import java.util.List;
 
 import static game.DuelOptionsEnum.BACK;
 import static game.DuelOptionsEnum.fromNumber;
+import static game.model.CharacterClassEnum.WARRIOR;
 
 public class DuelSettings extends GameBase {
 
@@ -48,7 +47,11 @@ public class DuelSettings extends GameBase {
                 }
                 case START_DUEL: {
                     log("Duel Started");
-                    // TODO: 07.02.2022 Start Duel, but first validate if two players exist 
+                    if (!players.contains(null)) {
+                        printer.printLine("Starting Duel!!! Get ready!!!");
+                    } else {
+                        printer.printLine("Setup players first.");
+                    }
                     break;
                 }
                 case BACK: {
@@ -74,7 +77,7 @@ public class DuelSettings extends GameBase {
         log("Setting Player_" + (playerNumber + 1));
         printer.printLine("Set Player " + (playerNumber + 1) + " name: ");
         String name = input.receive();
-        List<Character> characters = setCharacter(1);
+        List<Character> characters = setCharacter(2);
         players.set(playerNumber, new Player(name, playerNumber, characters));
     }
 
@@ -82,8 +85,18 @@ public class DuelSettings extends GameBase {
 
         List<Character> characters = new ArrayList<>();
         for (int i = 0; i < numberOfCharacters; i++) {
-            // TODO: 08.02.2022 Character Class selection
-            characters.add((Character) new WarriorCharacter());
+            log("Setting Character_" + i);
+            printer.printLine("Pick a Character " + (i + 1) + "/" + numberOfCharacters + ": ");
+            displayCharacters();
+            CharacterClassEnum characterClass = CharacterClassEnum.fromNumber(input.receive(1, CharacterClassEnum.values().length));
+            Character character;
+
+            if (characterClass == WARRIOR) {
+                character = new WarriorCharacter();
+            } else {
+                character = new MageCharacter();
+            }
+            characters.add(character);
         }
         return characters;
     }
@@ -91,6 +104,12 @@ public class DuelSettings extends GameBase {
     private void displayMenu() {
         for (DuelOptionsEnum option : DuelOptionsEnum.values()) {
             printer.printLine(option.toString());
+        }
+    }
+
+    private void displayCharacters() {
+        for (CharacterClassEnum option : CharacterClassEnum.values()) {
+            printer.printLine(option.toStringWithNumber());
         }
     }
 }

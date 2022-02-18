@@ -6,8 +6,8 @@ public class WarriorCharacter extends Character {
 
     public WarriorCharacter() {
         super(WARRIOR, 200, 20);
-        actions.add((Action) new Attack());
-        actions.add((Action) new Heal());
+        actions.add(new Attack());
+        actions.add(new Heal());
     }
 
 }

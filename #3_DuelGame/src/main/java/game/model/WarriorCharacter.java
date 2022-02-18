@@ -1,18 +1,13 @@
 package game.model;
 
-public class WarriorCharacter extends AbstractCharacter {
+import static game.model.CharacterClassEnum.WARRIOR;
+
+public class WarriorCharacter extends Character {
 
     public WarriorCharacter() {
-        super("Warrior", 200, 20);
+        super(WARRIOR, 200, 20);
+        actions.add((Action) new Attack());
+        actions.add((Action) new Heal());
     }
 
-    @Override
-    int attack() {
-        return (int) ((Math.random() + 1) * 10);
-    }
-
-    @Override
-    int heal() {
-        return (int) ((Math.random() + 1) * 10);
-    }
 }

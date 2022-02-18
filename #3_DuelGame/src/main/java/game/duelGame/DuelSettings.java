@@ -2,23 +2,26 @@ package game.duelGame;
 
 import game.DuelOptionsEnum;
 import game.model.AbstractCharacter;
+import game.model.Character;
 import game.model.Player;
 import game.model.WarriorCharacter;
 import game.utils.Logger;
 import game.utils.Printer;
 import game.utils.Receiver;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 import static game.DuelOptionsEnum.BACK;
 import static game.DuelOptionsEnum.fromNumber;
 
 public class DuelSettings extends GameBase {
 
-    Player[] players = new Player[2];
+    List<Player> players = new ArrayList<>();
 
-    DuelSettings(Printer printer, Receiver input, Logger logger) {
-        super(logger, printer, input);
+    DuelSettings(Printer printer, Receiver receiver, Logger logger) {
+        super(logger, printer, receiver);
+        initializePlayers();
     }
 
     void run() {
@@ -28,7 +31,7 @@ public class DuelSettings extends GameBase {
         DuelOptionsEnum menuChoice;
         do {
             printer.printTitle("Duel Settings");
-            printer.printSubTitle(Arrays.toString(players).replace("null", "SETUP_PLAYER"));
+            printer.printSubTitle(players.toString().replace("null", "SET_PLAYER"));
             displayMenu();
 
             int inputChoice = input.receive(1, DuelOptionsEnum.values().length);
@@ -36,12 +39,10 @@ public class DuelSettings extends GameBase {
 
             switch (menuChoice) {
                 case SET_PLAYER_1: {
-                    log("Setting Player_1");
                     setPlayer(0);
                     break;
                 }
                 case SET_PLAYER_2: {
-                    log("Setting Player_2");
                     setPlayer(1);
                     break;
                 }
@@ -56,26 +57,33 @@ public class DuelSettings extends GameBase {
                 }
                 default: {
                     log("Not implemented option chosen.");
-                    printer.printLine("Option not yet implemented.\n");
+                    printer.printLine("No such option, please choose again.\n");
                 }
             }
 
         } while (!menuChoice.equals(BACK));
     }
 
-    private void setPlayer(int playerNumber) {
-        printer.printLine("Set Player " + (playerNumber + 1) + " name: ");
-        String name = input.receive();
-        AbstractCharacter[] characters = setCharacter(1);
-        players[playerNumber] = new Player(name, playerNumber, characters);
+    private void initializePlayers() {
+        for (int i = 0; i < 2; i++) {
+            players.add(null);
+        }
     }
 
-    private AbstractCharacter[] setCharacter(int numberOfCharacters) {
+    private void setPlayer(int playerNumber) {
+        log("Setting Player_" + (playerNumber + 1));
+        printer.printLine("Set Player " + (playerNumber + 1) + " name: ");
+        String name = input.receive();
+        List<Character> characters = setCharacter(1);
+        players.set(playerNumber, new Player(name, playerNumber, characters));
+    }
 
-        AbstractCharacter[] characters = new AbstractCharacter[numberOfCharacters];
+    private List<Character> setCharacter(int numberOfCharacters) {
+
+        List<Character> characters = new ArrayList<>();
         for (int i = 0; i < numberOfCharacters; i++) {
             // TODO: 08.02.2022 Character Class selection
-            characters[i] = new WarriorCharacter();
+            characters.add((Character) new WarriorCharacter());
         }
         return characters;
     }

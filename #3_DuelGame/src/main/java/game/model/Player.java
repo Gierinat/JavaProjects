@@ -1,13 +1,14 @@
 package game.model;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class Player {
     String name;
     int ordinal;
-    AbstractCharacter[] characters;
+    List<Character> characters;
 
-    public Player(String name, int ordinal, AbstractCharacter[] characters) {
+    public Player(String name, int ordinal, List<Character> characters) {
         this.name = name;
         this.ordinal = ordinal;
         this.characters = characters;
@@ -16,6 +17,6 @@ public class Player {
     @Override
     public String toString() {
         return "Player " + (ordinal + 1) + ": " + name +
-                " (" + Arrays.toString(characters) + ")";
+                " (" + characters.toString() + ")";
     }
 }

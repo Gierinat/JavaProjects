@@ -2,22 +2,20 @@ package game.model;
 
 public abstract class AbstractCharacter {
 
-    String className;
+    CharacterClassEnum className;
     int hitPoints;
     int manaPoints;
 
-    public AbstractCharacter(String className, int hitPoints, int manaPoints) {
-        this.className = className;
+    public AbstractCharacter(CharacterClassEnum characterClass, int hitPoints, int manaPoints) {
+        this.className = characterClass;
         this.hitPoints = hitPoints;
         this.manaPoints = manaPoints;
     }
 
-    abstract int attack();
-    abstract int heal();
 
     @Override
     public String toString() {
-        return className;
+        return className.toString();
     }
 
 }

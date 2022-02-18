@@ -35,7 +35,7 @@ public class DuelGame extends GameBase {
                 }
                 default: {
                     log("Not implemented option chosen.");
-                    printer.printLine("Option not yet implemented.\n");
+                    printer.printLine("No such option, please choose again.\n");
                 }
             }
         } while (!menuChoice.equals(MainMenuOptionsEnum.EXIT));

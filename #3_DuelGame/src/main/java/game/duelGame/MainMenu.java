@@ -5,9 +5,9 @@ import game.utils.Logger;
 import game.utils.Printer;
 import game.utils.Receiver;
 
-public class DuelGame extends GameBase {
+public class MainMenu extends GameBase {
 
-    public DuelGame(Logger logger, Printer printer, Receiver input) {
+    public MainMenu(Logger logger, Printer printer, Receiver input) {
         super(logger, printer, input);
     }
 
@@ -20,13 +20,13 @@ public class DuelGame extends GameBase {
             printer.printTitle("Duel Game Main Menu");
             displayMenu();
 
-            int inputChoice = input.receive(1, MainMenuOptionsEnum.values().length);
+            int inputChoice = receiver.receive(1, MainMenuOptionsEnum.values().length);
             menuChoice = MainMenuOptionsEnum.fromNumber(inputChoice);
 
             switch (menuChoice) {
                 case NEW_GAME: {
                     log("New Game chosen.");
-                    new DuelSettings(printer, input, logger).run();
+                    new DuelStarter(printer, receiver, logger).run();
                     break;
                 }
                 case EXIT: {

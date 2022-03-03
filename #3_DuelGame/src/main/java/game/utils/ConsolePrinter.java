@@ -63,4 +63,9 @@ public class ConsolePrinter implements Printer {
         printStream.println(subTitle);
         printStream.println("-".repeat(80));
     }
+
+    @Override
+    public void printDivider() {
+        printStream.println("-".repeat(80));
+    }
 }

@@ -49,7 +49,7 @@ public class DuelStarter extends GameBase {
                     log("Duel Started");
                     if (!players.contains(null)) {
                         // TODO: 18.02.2022 replace 2 with number of rounds from settings
-                        for (int i = 0; i < 2; i++) {
+                        for (int i = 1; i <= 2; i++) {
                             new DuelRound(logger, printer, receiver, players).start(i);
                         }
                     } else {
@@ -81,11 +81,11 @@ public class DuelStarter extends GameBase {
         printer.printLine("Set Player " + (playerNumber + 1) + " name: ");
         String name = receiver.receive();
         // TODO: 18.02.2022 replace 2 with number of characters from settings
-        List<Character> characters = setCharacter(2);
+        List<Character> characters = setCharacter(2, playerNumber);
         players.set(playerNumber, new Player(name, playerNumber, characters));
     }
 
-    private List<Character> setCharacter(int numberOfCharacters) {
+    private List<Character> setCharacter(int numberOfCharacters, int playerNumber) {
 
         List<Character> characters = new ArrayList<>();
         for (int i = 0; i < numberOfCharacters; i++) {
@@ -96,9 +96,9 @@ public class DuelStarter extends GameBase {
             Character character;
 
             if (characterClass == WARRIOR) {
-                character = new WarriorCharacter();
+                character = new WarriorCharacter(playerNumber);
             } else {
-                character = new MageCharacter();
+                character = new MageCharacter(playerNumber);
             }
             characters.add(character);
         }

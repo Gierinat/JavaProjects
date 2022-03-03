@@ -16,4 +16,9 @@ public class Attack extends Action {
             hitPoints = 0;
         }
     }
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName();
+    }
 }

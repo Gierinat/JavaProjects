@@ -3,12 +3,12 @@ package game.model;
 import java.util.List;
 
 public class Player {
-    String name;
+    public String name;
     int ordinalNumber;
     public List<Character> characters;
 
     public Player(String name, int ordinalNumber, List<Character> characters) {
-        this.name = name;
+        this.name = name.toUpperCase();
         this.ordinalNumber = ordinalNumber;
         this.characters = characters;
     }

@@ -6,8 +6,8 @@ import static game.model.CharacterClassEnum.MAGE;
 
 public class MageCharacter extends Character {
 
-    public MageCharacter() {
-        super(MAGE, 100, 50);
+    public MageCharacter(int owningPlayerIndex) {
+        super(MAGE, 100, 50, owningPlayerIndex);
         appendActions();
     }
 

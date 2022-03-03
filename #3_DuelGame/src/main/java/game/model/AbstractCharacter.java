@@ -10,7 +10,7 @@ public abstract class AbstractCharacter {
     int manaPoints;
     int currentHitPoints;
     int currentManaPoints;
-    List<Action> actions = new ArrayList<>();
+    public List<Action> actions = new ArrayList<>();
 
     public AbstractCharacter(CharacterClassEnum characterClass, int hitPoints, int manaPoints) {
         this.className = characterClass;

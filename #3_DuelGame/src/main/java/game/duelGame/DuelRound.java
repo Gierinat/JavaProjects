@@ -23,10 +23,10 @@ public class DuelRound extends GameBase {
         printer.printTitle("Starting Duel!!! Get ready!!!");
         printer.printSubTitle("Round " + (roundNumber + 1));
 
-        int playerIndicator = 0;
+        int turnCounter = 1;
         do {
-            new DuelTurn(logger, printer, receiver, players).start(playerIndicator);
-            playerIndicator = playerIndicator == 0 ? 1 : 0;
+            new DuelTurn(logger, printer, receiver, players).start(roundNumber, turnCounter);
+            turnCounter++;
         } while (true);
     }
 }

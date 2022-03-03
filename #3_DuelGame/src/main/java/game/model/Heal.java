@@ -19,4 +19,9 @@ public class Heal extends Action {
         }
 
     }
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName();
+    }
 }

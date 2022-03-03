@@ -4,8 +4,8 @@ import static game.model.CharacterClassEnum.WARRIOR;
 
 public class WarriorCharacter extends Character {
 
-    public WarriorCharacter() {
-        super(WARRIOR, 200, 20);
+    public WarriorCharacter(int owningPlayerNumber) {
+        super(WARRIOR, 200, 20, owningPlayerNumber);
         appendActions();
     }
 

@@ -15,4 +15,6 @@ public interface Printer {
     void printTitle(String title);
 
     void printSubTitle(String subTitle);
+
+    void printDivider();
 }

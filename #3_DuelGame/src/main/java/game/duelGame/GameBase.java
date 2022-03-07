@@ -7,13 +7,13 @@ import game.utils.Receiver;
 public abstract class GameBase {
 
     Printer printer;
-    Receiver input;
+    Receiver receiver;
     Logger logger;
 
-    public GameBase(Logger logger, Printer printer, Receiver input) {
+    public GameBase(Logger logger, Printer printer, Receiver receiver) {
         this.printer = printer;
         this.logger = logger;
-        this.input = input;
+        this.receiver = receiver;
     }
 
     void log(String message) {

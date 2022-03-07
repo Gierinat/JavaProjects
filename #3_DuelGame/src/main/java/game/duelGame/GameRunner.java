@@ -26,7 +26,7 @@ public class GameRunner {
             Logger logger = new LoggerPrintStream(logLevel, logPrintStream);
             Printer printer = new ConsolePrinter(System.out);
 
-            new DuelGame(
+            new MainMenu(
                     logger,
                     printer,
                     new InputReceiver(logger, new InputValidator(logger, printer))).run();
